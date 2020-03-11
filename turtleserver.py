@@ -15,13 +15,14 @@ sock = socket.socket()
 sock.bind((hostname, port))
 sock.listen()
 conn, addr = sock.accept()
-
+print("Server has received client")
 colors = ["red", "blue", "green"]
 colorIdx = 0
-
+size = 1
 while True:
     cmessage = conn.recv(1024)
     cmd = cmessage.decode()
+    print("received: " + cmd)
     if cmd == "quit": break
     elif cmd == "w":
         obj1.forward(12)
@@ -42,13 +43,11 @@ while True:
             colorIdx = 0
         obj1.color(colors[colorIdx])
     elif cmd == "up":
-        size = obj1.turtlesize()
-        increase = tuple([num + 1 for num in size])
-        obj1.turtlesize(*increase)
+        size = size + 1
+        obj1.turtlesize(size, size, size)
     elif cmd == "down":
-        size = obj1.turtlesize()
-        decrease = tuple([num - 1 for num in size])
-        obj1.turtlesize(*decrease)
+        size = size - 1
+        obj1.turtlesize(size, size, size)
 
 sock.close()
 wn.bye()

@@ -3,24 +3,14 @@ import socket
 
 hostname = "localhost"
 port = 7000
-""" 
-w = 119
-s = 115
-a = 97
-d = 100
-ESC = 27
-UP
-DOWN
-LEFT
-RIGHT
-"""
 socket = socket.socket()
 socket.connect((hostname, port))
-#if successful conn
+print("Client has connected to server")
 root = tkinter.Tk()
 frame = tkinter.Frame(root, width=100, height=100)
 def key(event):
     ch = event.char
+    print("pressed: " + ch)
     if ch == "w":
         socket.send(ch.encode())
     elif ch == "s":
