@@ -16,7 +16,7 @@ sock.bind((hostname, port))
 sock.listen()
 conn, addr = sock.accept()
 print("Server has received client")
-colors = ["red", "blue", "green"]
+colors = ["red", "orange", "yellow", "green", "blue", "purple", "black"]
 colorIdx = 0
 size = 1
 while True:
@@ -35,11 +35,11 @@ while True:
     elif cmd == "left":
         colorIdx = colorIdx - 1
         if colorIdx < 0:
-            colorIdx = 2
+            colorIdx = len(colors) - 1
         obj1.color(colors[colorIdx])
     elif cmd == "right":
         colorIdx = colorIdx + 1
-        if colorIdx > 2:
+        if colorIdx > len(colors) - 1:
             colorIdx = 0
         obj1.color(colors[colorIdx])
     elif cmd == "up":
